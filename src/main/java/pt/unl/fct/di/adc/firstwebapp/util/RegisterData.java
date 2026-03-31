@@ -33,6 +33,9 @@ public class RegisterData {
 				nonEmptyOrBlankField(password) &&
 				nonEmptyOrBlankField(phone) &&
 				nonEmptyOrBlankField(address) &&
-				nonEmptyOrBlankField(role);
+				nonEmptyOrBlankField(role)
+				&& (role.equals("USER")
+						|| role.equals("ADMIN")
+						|| role.equals("BOFFICER"));
 	}
 }
