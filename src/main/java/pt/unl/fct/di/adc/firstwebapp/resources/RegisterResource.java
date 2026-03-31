@@ -34,7 +34,7 @@ public class RegisterResource {
 	public RegisterResource() {
 	} // Default constructor, nothing to do
 
-	public static class InputData {
+	private static class InputData {
 		public RegisterData input;
 	}
 

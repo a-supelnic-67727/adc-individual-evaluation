@@ -26,16 +26,16 @@ public class DeleteAccountResource {
   public DeleteAccountResource() {
   }
 
-  public static class DeleteRequest {
+  private static class DeleteRequest {
     public Input input;
     public TokenData token;
   }
 
-  public static class Input {
+  private static class Input {
     public String username;
   }
 
-  public static class TokenData {
+  private static class TokenData {
     public String tokenID;
   }
 

@@ -28,20 +28,16 @@ public class ModifyAccountResource {
   public ModifyAccountResource() {
   }
 
-  public static class ModifyAccountData {
+  private static class ModifyAccountData {
     public Input input;
     public TokenData token;
-
-    public boolean validModification() {
-      return input.attributes != null && !input.attributes.isEmpty();
-    }
   }
 
-  public static class TokenData {
+  private static class TokenData {
     public String tokenID;
   }
 
-  public static class Input {
+  private static class Input {
     public String username;
     public Map<String, String> attributes; // phone, address
   }
@@ -50,7 +46,7 @@ public class ModifyAccountResource {
   @Path("/")
   @Consumes(MediaType.APPLICATION_JSON)
   public Response modifyAccount(ModifyAccountData data) {
-    if (data.input.username == null || !data.validModification()) {
+    if (data.input.username == null || data.input.attributes == null || data.input.attributes.isEmpty()) {
       return buildErrorResponse(ErrorResponse.ErrorCodes.INVALID_INPUT);
     }
 

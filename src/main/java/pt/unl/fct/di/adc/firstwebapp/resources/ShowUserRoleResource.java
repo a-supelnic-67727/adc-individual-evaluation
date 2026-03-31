@@ -25,16 +25,16 @@ public class ShowUserRoleResource {
   public ShowUserRoleResource() {
   }
 
-  public static class RequestData {
+  private static class RequestData {
     public InputData input;
     public TokenData token;
   }
 
-  public static class InputData {
+  private static class InputData {
     public String username;
   }
 
-  public static class TokenData {
+  private static class TokenData {
     public String tokenID;
   }
 

@@ -39,7 +39,7 @@ public class LoginResource {
 	public LoginResource() {
 	}
 
-	public static class InputData {
+	private static class InputData {
 		public LoginData input;
 	}
 
