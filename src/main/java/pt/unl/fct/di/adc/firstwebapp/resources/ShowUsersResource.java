@@ -86,8 +86,7 @@ public class ShowUsersResource {
       return success(users);
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error retrieving users.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

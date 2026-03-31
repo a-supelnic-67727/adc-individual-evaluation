@@ -114,8 +114,7 @@ public class ModifyAccountResource {
       txn.commit();
       return success("Updated successfully");
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error modifying user.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

@@ -4,17 +4,255 @@
 <head>
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
   <title>ADC: Individual Exercise</title>
+  <style>
+    .endpoint {
+      border: 1px solid #ccc;
+      margin: 15px 0;
+      padding: 10px;
+    }
+
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Welcome to my individual exercise!</h1>
 
-  <table>
-    <tr>
-      <td colspan="2" style="font-weight:bold;">Available Services:</td>
-    </tr>
-  </table>
+  <h2>Available Services (JSON Format)</h2>
+
+  <!-- OP1 -->
+  <div class="endpoint">
+    <h3>Op1: Create Account (/createaccount)</h3>
+    <b>Request:</b>
+    <pre>{
+  "input": {
+    "username": "string",
+    "password": "string",
+    "confirmation": "string",
+    "phone": "string",
+    "address": "string",
+    "role": "USER|BOFFICER|ADMIN"
+  }
+}</pre>
+
+    <b>Response (Success):</b>
+    <pre>{
+  "status": "success",
+  "data": {
+    "username": "string",
+    "role": "USER|BOFFICER|ADMIN"
+  }
+}</pre>
+  </div>
+
+  <!-- OP2 -->
+  <div class="endpoint">
+    <h3>Op2: Login (/login)</h3>
+    <b>Request:</b>
+    <pre>{
+  "input": {
+    "username": "string",
+    "password": "string"
+  }
+}</pre>
+
+    <b>Response (Success):</b>
+    <pre>{
+  "status": "success",
+  "data": {
+    "token": {
+      "tokenId": "string",
+      "username": "string",
+      "role": "USER|ADMIN|BOFFICER",
+      "issuedAt": "int",
+      "expiresAt": "int"
+    }
+  }
+}</pre>
+  </div>
+
+  <!-- OP3 -->
+  <div class="endpoint">
+    <h3>Op3: Show Users (/showusers)</h3>
+    <pre>{
+  "input": {},
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "users": [
+      {
+        "username": "string",
+        "role": "USER|ADMIN|BOFFICER"
+      }
+    ]
+  }
+}</pre>
+  </div>
+
+  <!-- OP4 -->
+  <div class="endpoint">
+    <h3>Op4: Delete Account (/deleteaccount)</h3>
+    <pre>{
+  "input": {
+    "username": "string"
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "message": "Account deleted successfully"
+  }
+}</pre>
+  </div>
+
+  <!-- OP5 -->
+  <div class="endpoint">
+    <h3>Op5: Modify Account (/modaccount)</h3>
+    <pre>{
+  "input": {
+    "username": "string",
+    "attributes": {
+      "phone": "string",
+      "address": "string"
+    }
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "message": "Updated successfully"
+  }
+}</pre>
+  </div>
+
+  <!-- OP6 -->
+  <div class="endpoint">
+    <h3>Op6: Show Sessions (/showauthsessions)</h3>
+    <pre>{
+  "input": {},
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "sessions": [
+      {
+        "tokenId": "string",
+        "username": "string",
+        "role": "string",
+        "expiresAt": "int"
+      }
+    ]
+  }
+}</pre>
+  </div>
+
+  <!-- OP7 -->
+  <div class="endpoint">
+    <h3>Op7: Show User Role (/showuserrole)</h3>
+    <pre>{
+  "input": {
+    "username": "string"
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "username": "string",
+    "role": "USER|ADMIN|BOFFICER"
+  }
+}</pre>
+  </div>
+
+  <!-- OP8 -->
+  <div class="endpoint">
+    <h3>Op8: Change User Role (/changeuserrole)</h3>
+    <pre>{
+  "input": {
+    "username": "string",
+    "newRole": "USER|ADMIN|BOFFICER"
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "message": "Role updated successfully"
+  }
+}</pre>
+  </div>
+
+  <!-- OP9 -->
+  <div class="endpoint">
+    <h3>Op9: Change Password (/changeuserpwd)</h3>
+    <pre>{
+  "input": {
+    "username": "string",
+    "oldPassword": "string",
+    "newPassword": "string"
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "message": "Password changed successfully"
+  }
+}</pre>
+  </div>
+
+  <!-- OP10 -->
+  <div class="endpoint">
+    <h3>Op10: Logout (/logout)</h3>
+    <pre>{
+  "input": {
+    "username": "string"
+  },
+  "token": {
+    "tokenId": "string",
+  }
+}</pre>
+
+    <pre>{
+  "status": "success",
+  "data": {
+    "message": "Logout successful"
+  }
+}</pre>
+  </div>
+
 </body>
+
 <footer>
   Made by: Artur Supelnic, 67727
 </footer>

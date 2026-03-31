@@ -106,8 +106,7 @@ public class ChangeUserPasswordResource {
       }
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error changing password.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

@@ -11,7 +11,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
 
 import com.google.gson.Gson;
 import com.google.cloud.Timestamp;
@@ -56,7 +55,7 @@ public class RegisterResource {
 
 			if (user != null) {
 				txn.rollback();
-				return Response.status(Status.CONFLICT).entity("User already exists.").build();
+				return buildErrorResponse(ErrorResponse.ErrorCodes.USER_ALREADY_EXISTS);
 			} else {
 				user = Entity.newBuilder(userKey)
 						.set("user_name", data.username)
@@ -72,8 +71,7 @@ public class RegisterResource {
 				return success(data.username, data.role);
 			}
 		} catch (Exception e) {
-			LOG.severe("Error registering user: " + e.getMessage());
-			return buildErrorResponse(ErrorResponse.ErrorCodes.USER_ALREADY_EXISTS);
+			return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
 		}
 	}
 

@@ -103,8 +103,7 @@ public class LogoutResource {
       return success();
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error during logout.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

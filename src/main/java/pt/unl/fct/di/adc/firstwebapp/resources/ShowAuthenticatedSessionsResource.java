@@ -72,8 +72,7 @@ public class ShowAuthenticatedSessionsResource {
       return success(resultsToList(results));
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error retrieving sessions.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

@@ -81,8 +81,7 @@ public class ShowUserRoleResource {
       return success(request.input.username, role);
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error retrieving user role.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 

@@ -78,8 +78,7 @@ public class DeleteAccountResource {
       return success("Account deleted successfully");
 
     } catch (Exception e) {
-      return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-          .entity("Error deleting account.").build();
+      return buildErrorResponse(ErrorResponse.ErrorCodes.FORBIDDEN);
     }
   }
 
